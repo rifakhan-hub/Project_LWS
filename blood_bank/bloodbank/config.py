@@ -2,9 +2,9 @@
 
 import os
 from dotenv import load_dotenv
-from pydantic import Basemodel
+from pydantic import BaseModel
 
-class Settings(Basemodel):
+class Settings(BaseModel):
     database_url: str = "sqlite:///./bloodbank.db"
     secret_key: str = "bloodbankmanagmentsystem"
     algorithm: str = "HS256"

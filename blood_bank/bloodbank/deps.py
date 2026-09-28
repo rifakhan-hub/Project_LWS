@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 from .database import get_db
 from .security import decode_access_token
 from .services import user as user_service
+from .models.user import Role, User
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/bloodbank/auth/login")
 
@@ -29,3 +30,16 @@ def get_current_user(
     if user is None or not user.is_active:
         raise credentials_error
     return user
+
+
+def require_roles(*allowed_roles: Role):
+    def role_checker(current_user: User = Depends(get_current_user)) -> User:
+        if current_user.role not in allowed_roles:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=f"This action requires one of these roles: "
+                       f"{[r.value for r in allowed_roles]}",
+            )
+        return current_user
+
+    return role_checker

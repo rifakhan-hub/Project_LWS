@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 
 from ..database import get_db
 from ..deps import get_current_user, require_roles
-from ..models.user import Role, User
+from ..models.user import Role
 from ..schemas.blood_group import (
     BloodGroupCreate,
     BloodGroupResponse,

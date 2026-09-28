@@ -1,4 +1,5 @@
 from .blood_group import BloodGroup
-from .user import User, Role
+from .user import Role, User
+from .donor import Donor
 
-__all__ = ["BloodGroup"]
+__all__ = ["BloodGroup", "User", "Role", "Donor"]

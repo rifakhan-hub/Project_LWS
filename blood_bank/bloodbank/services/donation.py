@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 
 from ..models.donation import Donation, ScreeningStatus
+from . import blood_unit as blood_unit_service
 
 
 def get_all(
@@ -34,4 +35,8 @@ def update_screening(db: Session, donation: Donation, status: ScreeningStatus) -
     donation.screening_status = status
     db.commit()
     db.refresh(donation)
+
+    if status == ScreeningStatus.passed:
+        blood_unit_service.create_from_donation(db, donation)
+
     return donation

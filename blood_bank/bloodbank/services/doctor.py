@@ -38,3 +38,6 @@ def update(db: Session, doctor: Doctor, data) -> Doctor:
 def delete(db: Session, doctor: Doctor):
     db.delete(doctor)
     db.commit()
+
+def get_by_user_id(db: Session, user_id: int):
+    return db.query(Doctor).filter(Doctor.user_id == user_id).first()

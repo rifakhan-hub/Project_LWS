@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from .routers import (auth, health, blood_group, donor, doctor, staff, patient, blood_component, donation, blood_unit,)
+from .routers import (auth, health, blood_group, donor, doctor, staff, patient, blood_component, donation, blood_unit, blood_request, blood_issue,)
 
 router = APIRouter(prefix="/bloodbank")
 
@@ -14,3 +14,5 @@ router.include_router(patient.router)
 router.include_router(blood_component.router)
 router.include_router(donation.router)
 router.include_router(blood_unit.router)
+router.include_router(blood_request.router)
+router.include_router(blood_issue.router)

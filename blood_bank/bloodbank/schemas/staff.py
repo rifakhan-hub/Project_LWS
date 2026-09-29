@@ -20,4 +20,3 @@ class StaffResponse(BaseModel):
     phone: str
 
     model_config = ConfigDict(from_attributes=True)
-    

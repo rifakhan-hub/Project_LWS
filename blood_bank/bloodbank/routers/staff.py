@@ -6,6 +6,8 @@ from ..deps import get_current_user, require_roles
 from ..models.user import Role
 from ..schemas.staff import StaffCreate, StaffResponse, StaffUpdate
 from ..services import staff as service
+from ..services import staff as staff_service
+
 
 router = APIRouter(prefix="/staff", tags=["Staff"])
 

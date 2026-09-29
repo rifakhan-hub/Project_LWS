@@ -5,8 +5,10 @@ from .doctor import Doctor
 from .staff import Staff
 from .patient import Patient, PatientStatus
 from .blood_component import BloodComponent
+from .donation import Donation, ScreeningStatus
 
 __all__ = [
     "BloodGroup", "User", "Role", "Donor", "Doctor", "Staff",
     "Patient", "PatientStatus", "BloodComponent",
+    "Donation", "ScreeningStatus",
 ]
